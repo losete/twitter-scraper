@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Verify') {
       steps {
-        sh 'bandit -r -lll ./ > reports/bandit.txt'
+        sh 'bandit -r ./'
       }
     }
     stage('Deploy') {
