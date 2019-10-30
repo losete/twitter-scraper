@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'tar -cvzf deploy.tar.gz deploy/'
+        sh 'tar -cvzf build.tar.gz build/'
         sh 'tar -cvzf reports.tar.gz reports/'
       }
     }
@@ -39,7 +39,7 @@ pipeline {
   post {
     always {
       archiveArtifacts 'reports.tar.gz'
-      archiveArtifacts 'deploy.tar.gz'
+      archiveArtifacts 'build.tar.gz'
     }
   }
 }
