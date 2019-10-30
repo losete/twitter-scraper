@@ -5,7 +5,7 @@ pipeline {
       steps{
         sh 'pip install -r requirements.txt'
         sh 'pip install flake8 pytest bandit'
-        sh 'mkdir reports/'
+        sh 'mkdir -p reports/'
       }
     }
     stage('validate') {
