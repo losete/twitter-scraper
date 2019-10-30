@@ -34,10 +34,15 @@ pipeline {
         sh 'python3 setup.py build'
       }
     }
+    stage('Prepare artifacts') {
+          steps {
+            sh 'tar -cvzf reports.tar.gz reports/'
+          }
+        }
   }
   post {
     always {
-      archiveArtifacts 'reports/*.txt'
+      archiveArtifacts 'reports.tar.gz'
     }
   }
 }
