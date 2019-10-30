@@ -4,6 +4,7 @@ pipeline {
     stage('Setup workspace'){
       steps{
         sh 'ls -la'
+        sh 'mkdir reports/'
       }
     }
     stage('validate') {
