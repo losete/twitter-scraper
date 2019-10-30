@@ -39,7 +39,7 @@ pipeline {
   post {
     always {
       archiveArtifacts 'reports.tar.gz'
-      archiveArtifacts 'build.tar.gz'
+      archiveArtifacts artifacts: 'build.tar.gz', onlyIfSuccessful: true
     }
   }
 }
