@@ -3,18 +3,19 @@ pipeline {
   stages {
     stage('Setup workspace'){
       steps{
-        sh 'ls -la'
+        sh 'pip install -r requirements.txt'
+        sh 'pip install flake8 pytest bandit'
         sh 'mkdir reports/'
       }
     }
     stage('validate') {
       steps {
-        sh 'ls -la'
+        sh 'flake8 --builtins="process_paragraph" > reports/flake8.txt'
       }
     }
     stage('Test') {
       steps {
-        sh 'ls -la'
+        sh 'pytest -rA test.py > reports/tests.txt'
       }
     }
     stage('Package') {
@@ -24,12 +25,12 @@ pipeline {
     }
     stage('Verify') {
       steps {
-        sh 'ls -la'
+        sh 'bandit -r ./ > reports/bandit.txt'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'ls -la'
+        sh 'python3 setup.py build'
       }
     }
   }
