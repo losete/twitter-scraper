@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Package') {
       steps {
-        sh 'ls -la'
+        sh 'python3 setup.py build'
       }
     }
     stage('Verify') {
@@ -31,18 +31,15 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'python3 setup.py build'
+        sh 'tar -cvzf deploy.tar.gz deploy/'
+        sh 'tar -cvzf reports.tar.gz reports/'
       }
     }
-    stage('Prepare artifacts') {
-          steps {
-            sh 'tar -cvzf reports.tar.gz reports/'
-          }
-        }
   }
   post {
     always {
       archiveArtifacts 'reports.tar.gz'
+      archiveArtifacts 'deploy.tar.gz'
     }
   }
 }
