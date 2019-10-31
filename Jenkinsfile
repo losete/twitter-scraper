@@ -47,7 +47,9 @@ pipeline {
     always {
       sh 'tar -cvzf reports.tar.gz reports/'
       archiveArtifacts 'reports.tar.gz'
-      archiveArtifacts artifacts: 'build.tar.gz', onlyIfSuccessful: true
+    }
+    success {
+      archiveArtifacts 'build.tar.gz'
     }
   }
 }
