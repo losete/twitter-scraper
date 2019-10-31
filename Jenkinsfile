@@ -5,33 +5,34 @@ pipeline {
       steps{
         sh 'pip install -r requirements.txt'
         sh 'pip install flake8 pytest bandit coverage'
-        sh 'mkdir -p reports/'
+        sh 'mkdir -p artifact_tmp/reports/'
       }
     }
     stage('validate') {
       steps {
-        sh 'flake8 --builtins="process_paragraph" > reports/flake8.txt'
+        sh 'flake8 --builtins="process_paragraph" > artifact_tmp/reports/flake8.txt'
       }
     }
     stage('Test') {
       steps {
-        sh 'pytest -rA test.py > reports/tests.txt'
-        sh 'coverage report test.py > reports/coverage.txt'
+        sh 'pytest -rA test.py > artifact_tmp/reports/tests.txt'
+        sh 'coverage report test.py > artifact_tmp/reports/coverage.txt'
       }
     }
     stage('Package') {
       steps {
         sh 'python3 setup.py build'
+        sh 'mv build/ artifact_tmp'
       }
     }
     stage('Verify') {
       steps {
-        sh 'bandit -r -lll -s B605 ./ -o "reports/bandit.txt"'
+        sh 'bandit -r -lll -s B605 ./ -o "artifact_tmp/reports/bandit.txt"'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'tar -cvzf build.tar.gz build/'
+        sh 'tar -cvzf build.tar.gz artifact_tmp/build/'
       }
     }
     stage('Benchmarking'){
@@ -39,13 +40,13 @@ pipeline {
         timeout(time: 1, unit: 'MINUTES')
       }
       steps{
-        sh 'python3 -m cProfile -s \'ncalls\' test.py > temp_file && head -n 30 temp_file > reports/benchmarks.txt'
+        sh 'python3 -m cProfile -s \'ncalls\' test.py > temp_file && head -n 30 temp_file > artifact_tmp/reports/benchmarks.txt'
       }
     }
   }
   post {
     always {
-      sh 'tar -cvzf reports.tar.gz reports/'
+      sh 'tar -cvzf reports.tar.gz artifact_tmp/reports/'
       archiveArtifacts 'reports.tar.gz'
     }
     success {
