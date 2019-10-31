@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'pytest --junitxml test.py > reports/tests.txt'
+        sh 'pytest -rA test.py > reports/tests.txt'
         sh 'coverage report test.py > reports/coverage.txt'
       }
     }
