@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      build 'Jenkinsfile/pipeline1'
+      build 'pipeline1'
     }
   }
 }
