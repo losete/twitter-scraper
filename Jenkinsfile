@@ -1,6 +1,9 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   stages {
+    stage('Clean workspace'){
+      sh 'rm -rf artifact_tmp'
+    }
     stage('Setup workspace'){
       steps{
         sh 'pip install -r requirements.txt'
@@ -22,7 +25,7 @@ pipeline {
     stage('Package') {
       steps {
         sh 'python3 setup.py build'
-        sh 'mv build/ artifact_tmp/build'
+        sh 'mv build/ artifact_tmp/'
       }
     }
     stage('Verify') {
