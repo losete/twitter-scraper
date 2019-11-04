@@ -55,7 +55,7 @@ pipeline {
       archiveArtifacts 'reports.tar.gz'
       archiveArtifacts 'build.tar.gz'
     }
-    failure {
+    ABORTED {
       archiveArtifacts '**'
       build job: 'pipeline1'
     }
