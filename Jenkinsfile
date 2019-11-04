@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Benchmarking'){
       options {
-        timeout(time: 1, unit: 'MINUTES')
+        timeout(time: 1, unit: 'MILLISECONDS')
       }
       steps{
         sh 'python3 -m cProfile -s \'ncalls\' test.py > temp_file && head -n 30 temp_file > artifact_tmp/reports/benchmarks.txt'
@@ -50,7 +50,7 @@ pipeline {
       archiveArtifacts 'reports.tar.gz'
       archiveArtifacts 'build.tar.gz'
     }
-    failure{
+    failure {
       archiveArtifacts '**'
       build job: 'pipeline1'
     }
