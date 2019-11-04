@@ -58,7 +58,7 @@ pipeline {
     aborted {
       archiveArtifacts '**'
       sh "ls -la ${pwd()}"
-      build (job: 'pipeline1')
+      build (job: 'pipeline1/master')
     }
   }
 }
