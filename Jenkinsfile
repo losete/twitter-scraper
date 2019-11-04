@@ -57,6 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
+      findFiles(glob: '*.*')
       build (job: 'pipeline1')
     }
   }
