@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      findFiles(glob: '*.*')
+      sh "ls -la ${pwd()}"
       build (job: 'pipeline1')
     }
   }
