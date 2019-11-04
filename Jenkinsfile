@@ -45,12 +45,24 @@ pipeline {
     }
   }
   post {
-    always {
+    success {
       sh 'tar -cvzf reports.tar.gz artifact_tmp/reports/'
       archiveArtifacts 'reports.tar.gz'
-    }
-    success {
       archiveArtifacts 'build.tar.gz'
+    }
+    failure{
+      archiveArtifacts '**'
+      build job: 'pipeline1'
+    }
+  }
+}
+
+pipeline1 {
+  agent { docker { image 'python:3.7.2' } }
+  stages {
+    stage('Archive artifacts'){
+      sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
+      archiveArtifacts 'artifacts.tar.gz'
     }
   }
 }
