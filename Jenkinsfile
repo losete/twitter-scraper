@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      build (job: 'pipeline1')
+      build (job: pipeline1)
     }
   }
 }
