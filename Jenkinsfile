@@ -2,7 +2,9 @@ pipeline {
   agent { docker { image 'python:3.7.2' } }
   stages {
     stage('Clean workspace'){
-      sh 'rm -rf artifact_tmp'
+      steps{
+        sh 'rm -rf artifact_tmp'
+      }
     }
     stage('Setup workspace'){
       steps{
