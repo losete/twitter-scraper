@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      build 'pipeline1'
+      build '${env.WORKSPACE}/pipeline1'
     }
   }
 }
