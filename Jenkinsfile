@@ -56,20 +56,9 @@ pipeline {
       archiveArtifacts 'build.tar.gz'
     }
     aborted {
-      archiveArtifacts '**'
-      build job: '../pipeline1'
-    }
-  }
-}
-
-pipeline1 {
-  agent { docker { image 'python:3.7.2' } }
-  stages {
-    stage('Archive artifacts'){
-      steps{
-        sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
-        archiveArtifacts 'artifacts.tar.gz'
-      }
+      build job: '../pipeline1', parameters: [
+        file(name: 'artifacts', value: artifact_tmp)
+        ]
     }
   }
 }
