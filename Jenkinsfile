@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      build job: 'pipeline1/enhancement/benchmark_fail_time'
+      build job: '../pipeline1'
     }
   }
 }
