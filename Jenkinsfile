@@ -57,9 +57,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts '**'
-      sh "ls -la ${pwd()}"
-      echo "${env.BRANCH_NAME}"
-      build job: 'pipeline1/${env.BRANCH_NAME}'
+      build job: 'pipeline1/enhancement/benchmark_fail_time'
     }
   }
 }
