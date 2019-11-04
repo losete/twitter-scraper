@@ -22,7 +22,7 @@ pipeline {
     stage('Package') {
       steps {
         sh 'python3 setup.py build'
-        sh 'mv build/ artifact_tmp'
+        sh 'mv build/ artifact_tmp/build'
       }
     }
     stage('Verify') {
