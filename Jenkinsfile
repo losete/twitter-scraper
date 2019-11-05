@@ -1,7 +1,7 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   options {
-    copyArtifactPermission('pipeline1,../pipeline1')
+    copyArtifactPermission('../pipeline1')
   }
   stages {
     stage('Clean workspace'){
