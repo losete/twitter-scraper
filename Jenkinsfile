@@ -60,7 +60,7 @@ pipeline {
     }
     aborted {
       sh 'tar -cvzf artifact.tar.gz artifact_tmp/'
-      archiveArtifacts 'artifact_tmp.tar.gz'
+      archiveArtifacts 'artifact.tar.gz'
     }
   }
 }
