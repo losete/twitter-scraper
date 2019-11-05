@@ -1,6 +1,6 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
-  properties {
+  options {
     copyArtifactPermissionProperty {
       projectNames('pipeline1','../pipeline1')
     }
