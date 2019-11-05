@@ -56,9 +56,8 @@ pipeline {
       archiveArtifacts 'build.tar.gz'
     }
     aborted {
-      build job: '../pipeline1', parameters: [
-        file(name: 'artifact_tmp', file: '$WORKSPACE')
-        ]
+      build job: '../pipeline1', [[$class: "FileParameterValue", name: "artifact_tmp",
+      file: file, originalFileName: 'artifact_tmp/']]
     }
   }
 }
