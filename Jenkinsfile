@@ -58,8 +58,7 @@ pipeline {
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp/'
       archiveArtifacts 'artifacts.tar.gz'
-      build job: '../pipeline1', parameters: [[$class: 'CopyArtifacts',
-        projectName:'../pipeline1', filter:'artifacts.tar.gz']]
+      build job: '../pipeline1'
     }
   }
 }
