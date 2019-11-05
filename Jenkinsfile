@@ -59,7 +59,8 @@ pipeline {
       archiveArtifacts 'build.tar.gz'
     }
     aborted {
-      archiveArtifacts '$HOME/artifact_tmp'
+      sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
+      archiveArtifacts 'artifacts.tar.gz'
     }
   }
 }
