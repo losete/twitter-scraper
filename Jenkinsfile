@@ -57,7 +57,7 @@ pipeline {
     }
     aborted {
       build job: '../pipeline1', parameters: [
-        file(name: 'artifact_tmp', file: $WORKSPACE)
+        file(name: 'artifact_tmp', file: '$WORKSPACE')
         ]
     }
   }
