@@ -60,7 +60,7 @@ pipeline {
     }
     aborted {
       archiveArtifacts 'artifact_tmp'
-      
+      build job: '../pipeline1'
     }
   }
 }
