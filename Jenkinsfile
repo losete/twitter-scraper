@@ -59,9 +59,8 @@ pipeline {
       archiveArtifacts 'build.tar.gz'
     }
     aborted {
-      sh 'mkdir results'
-      sh 'mv artifact_tmp results/artifacts'
-      archiveArtifacts 'results/'
+      sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
+      archiveArtifacts 'artifacts.tar.gz'
       build job: '../pipeline1'
     }
   }
