@@ -1,7 +1,7 @@
 pipeline {
   agent { docker { image 'python:3.7.2' } }
   options {
-    copyArtifactPermission('**')
+    copyArtifactPermission('**, pipelines/pipeline_abort')
   }
   stages {
     stage('Clean workspace'){
@@ -61,7 +61,7 @@ pipeline {
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
       archiveArtifacts 'artifacts.tar.gz'
-      build (job: "pipeline_abort/" + env.BRANCH_NAME , wait: true, propagate: true)
+      build (job: "pipelines/pipeline_abort", wait: true, propagate: true)
     }
   }
 }
