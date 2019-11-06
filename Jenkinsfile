@@ -45,7 +45,7 @@ pipeline {
     }
     stage('Benchmarking'){
       options {
-        timeout(time: 5, unit: 'MINUTES')
+        timeout(time: 5, unit: 'MILLISECONDS')
       }
       steps {
         sh 'bash benchmarks/benchmark.sh'
