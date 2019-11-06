@@ -61,6 +61,9 @@ pipeline {
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
       archiveArtifacts 'artifacts.tar.gz'
+      echo "hello ${env.WORKSPACE}"
+      sh "ls ${env.WORKSPACE}"
+      sh "ls ${env.WORKSPACE}/pipelines"
       build job: "pipelines/pipeline_abort"
     }
   }
