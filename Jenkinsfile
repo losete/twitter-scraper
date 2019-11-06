@@ -45,10 +45,10 @@ pipeline {
     }
     stage('Benchmarking'){
       options {
-        timeout(time: 1, unit: 'MILLISECONDS')
+        timeout(time: 5, unit: 'MINUTES')
       }
-      steps{
-        sh 'python3 -m cProfile -s \'ncalls\' test.py > temp_file && head -n 30 temp_file > artifact_tmp/reports/benchmarks.txt'
+      steps {
+        sh 'bash benchmarks/benchmark.sh'
       }
     }
   }
