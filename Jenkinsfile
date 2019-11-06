@@ -61,7 +61,7 @@ pipeline {
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
       archiveArtifacts 'artifacts.tar.gz'
-      build job: 'enhancement%2Fbenchmark_fail_time/pipelines/pipeline_abort'
+      build job: 'pipeline_abort'
     }
   }
 }
