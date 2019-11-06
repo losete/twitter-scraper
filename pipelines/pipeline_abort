@@ -3,9 +3,10 @@ pipeline {
   stages {
     stage('Archive artifacts'){
       steps{
+        echo 'LLEGOOOOOOOOOOO'
         step([ $class: 'CopyArtifact',
         filter: 'artifacts.tar.gz',
-        projectName: 'twitter_scraper_mp/enhancement%2Fbenchmark_fail_time',
+        projectName: '../twitter_scraper_mp/enhancement%2Fbenchmark_fail_time',
         fingerprintArtifacts: true,
         selector: lastWithArtifacts()
         ])
