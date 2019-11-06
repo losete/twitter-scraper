@@ -60,8 +60,9 @@ pipeline {
     }
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
+      sh 'ls -la'
       archiveArtifacts 'artifacts.tar.gz'
-      build job: 'pipeline_abort'
+      build job: 'pipelines/pipeline_abort'
     }
   }
 }
