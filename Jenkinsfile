@@ -61,7 +61,7 @@ pipeline {
     aborted {
       sh 'tar -cvzf artifacts.tar.gz artifact_tmp'
       archiveArtifacts 'artifacts.tar.gz'
-      build (job: "pipelines/pipeline_abort/${GIT_BRANCH}", wait: true, propagate: true)
+      build (job: "pipelines/pipeline_abort", wait: true, propagate: true)
     }
   }
 }
