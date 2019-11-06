@@ -16,7 +16,7 @@ do
 done
 
 mean=$((total/5))
-echo "--------------------" >> reports/benchmark_report
-echo "Total time spent ($i jobs): $total" >> reports/benchmark_report
-echo "Time spent per job: $mean" >> reports/benchmark_report
-echo "--------------------" >> reports/benchmark_report
+echo "--------------------" >> artifact_tmp/reports/benchmark_report
+echo "Total time spent ($i jobs): $total" >> artifact_tmp/reports/benchmark_report
+echo "Time spent per job: $mean" >> artifact_tmp/reports/benchmark_report
+echo "--------------------" >> artifact_tmp/reports/benchmark_report
