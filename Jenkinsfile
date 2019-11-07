@@ -41,10 +41,13 @@ pipeline {
     }
   }
   post {
-    always {
+    success {
       sh 'tar -cvzf reports.tar.gz reports/'
       archiveArtifacts 'reports.tar.gz'
-      archiveArtifacts artifacts: 'build.tar.gz', onlyIfSuccessful: true
+      archiveArtifacts artifacts: 'build.tar.gz'
+    }
+    failure {
+      mail bcc: '', body: 'Workflow failed, check artifacts', cc: '', from: '', replyTo: '', subject: 'Alert', to: 'notificaciones.torusnewies@gmail.com'
     }
   }
 }

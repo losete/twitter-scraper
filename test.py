@@ -8,7 +8,7 @@ class TestFamilyUnderscore(unittest.TestCase):
         user = '_'
         tweets = list(get_tweets(query=user, pages=1))
 
-        self.assertTrue(tweets[0]['text'].__contains__('Want to feel old?'))
+        self.assertTrue(tweets[0]['text'].__contains__('Want to feel old???'))
 
     def test_mother(self):
         user = '__'
