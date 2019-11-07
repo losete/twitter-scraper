@@ -48,7 +48,7 @@ pipeline {
     }
     failure {
       sh 'tar -cvzf reports.tar.gz reports/'
-      mail attachmentsPattern: 'reports.tar.gz', bcc: '', body: 'Workflow failed, check artifacts', cc: '', from: '', replyTo: '', subject: 'Alert', to: 'losetazo@gmail.com'
+      emailext attachmentsPattern: 'reports.tar.gz', body: 'Workflow failed, check attached artifacts', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", cc: '', from: '', replyTo: '', subject: 'Alert', to: 'losetazo@gmail.com'
     }
   }
 }
