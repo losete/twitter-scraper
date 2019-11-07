@@ -60,7 +60,7 @@ pipeline {
             sh "git remote update"
             sh "git fetch --all"
             sh "git pull --all"
-            sh "git checkout dev"
+            sh "git checkout origin/dev"
             sh "git merge origin/master"
             sh "git merge ${BRANCH_NAME}"
             sh "git push https://$user:$pass@github.com/losete/twitter-scraper/"
