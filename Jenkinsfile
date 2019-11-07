@@ -47,7 +47,8 @@ pipeline {
       archiveArtifacts artifacts: 'build.tar.gz'
     }
     failure {
-      mail bcc: '', body: 'Workflow failed, check artifacts', cc: '', from: '', replyTo: '', subject: 'Alert', to: 'losetazo@gmail.com'
+      sh 'tar -cvzf reports.tar.gz reports/'
+      mail attachmentsPattern: 'reports.tar.gz', bcc: '', body: 'Workflow failed, check artifacts', cc: '', from: '', replyTo: '', subject: 'Alert', to: 'losetazo@gmail.com'
     }
   }
 }
