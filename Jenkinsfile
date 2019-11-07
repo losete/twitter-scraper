@@ -48,7 +48,7 @@ pipeline {
     }
     failure {
       sh 'tar -cvzf reports.tar.gz reports/'
-      emailext attachmentsPattern: 'reports.tar.gz', body: 'Workflow failed, check attached artifacts', subject: "Alert: Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",  from: '', replyTo: '', to: 'losetazo@gmail.com'
+      emailext attachmentsPattern: 'reports.tar.gz', body: 'Workflow failed, check attached artifacts', subject: "Alert: Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",  from: 'notificaciones.torusnewies@gmail.com', replyTo: '', to: 'losetazo@gmail.com'
     }
   }
 }
