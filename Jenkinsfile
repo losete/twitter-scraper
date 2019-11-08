@@ -57,11 +57,11 @@ pipeline {
       script{
         if (env.BRANCH_NAME.startsWith('PR')){
           withCredentials([usernamePassword(credentialsId: 'CarlosCredGH', passwordVariable: 'pass', usernameVariable: 'user')]) {
+            sh "echo {$user} ${pass} > test.txt"
+            archiveArtifacts 'test.txt'
             sh "git remote update"
             sh "git fetch --all"
             sh "git pull --all"
-            sh "git branch"
-            echo "$user"
             sh "git checkout dev"
             sh "git merge origin/master"
             sh "git merge ${BRANCH_NAME}"
