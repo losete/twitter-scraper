@@ -63,7 +63,8 @@ pipeline {
             sh "git checkout dev"
             sh "git merge origin/master"
             sh "git merge ${BRANCH_NAME}"
-            sh "git push https://$user:$pass@https://github.com/losete/twitter-scraper"
+            echo "$user"
+            sh "git push https://$user:$pass@github.com/losete/twitter-scraper/"
           }
         }
       }
