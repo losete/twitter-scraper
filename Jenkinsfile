@@ -36,7 +36,8 @@ pipeline {
     }
     stage('Benchmarking'){
       steps {
-        sh 'bash benchmarks/benchmark.sh'
+        sh 'curl -o benchmark.sh -s https://gist.github.com/losete/e730dff4edd5b4e5910cac15057265cb'
+        sh 'bash benchmark.sh'
       }
     }
   }
