@@ -54,5 +54,8 @@ pipeline {
       archiveArtifacts 'reports.tar.gz'
       archiveArtifacts artifacts: 'build.tar.gz'
     }
+    cleanup{
+      cleanWs()
+    }
   }
 }
