@@ -61,10 +61,10 @@ pipeline {
             sh "git fetch --all"
             sh "git pull --all"
             sh "git branch"
+            echo "$user"
             sh "git checkout dev"
             sh "git merge origin/master"
             sh "git merge ${BRANCH_NAME}"
-            echo "$user"
             sh "git push https://$user:$pass@github.com/losete/twitter-scraper/"
           }
         }
