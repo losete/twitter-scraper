@@ -70,7 +70,7 @@ pipeline {
         }
       }
     }
-    cleanuo{
+    cleanup{
       cleanWs()
     }
   }
