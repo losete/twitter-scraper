@@ -70,5 +70,8 @@ pipeline {
         }
       }
     }
+    cleanuo{
+      cleanWs()
+    }
   }
 }
